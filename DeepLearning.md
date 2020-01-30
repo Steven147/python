@@ -82,37 +82,7 @@
       (venv) > pip install --upgrade tensorflow
       ```
 
-2. 问题修复
-
-   1. >"Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA"
-
-      ```
-        >>> w=tf.Variable([[0.5,1.0]])
-        2020-01-31 00:15:50.511182: I tensorflow/core/platform/cpu_feature_guard.cc:142] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
-        2020-01-31 00:15:50.527003: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x7f7fc1dcc1a0 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
-        2020-01-31 00:15:50.527021: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
-      ```
-
-      问题所在：
-
-      [彻底解决“Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA”警告](https://blog.csdn.net/wlwlomo/article/details/82806118)
-
-      [警告：Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA](https://blog.csdn.net/hq86937375/article/details/79696023)
-
-      链接中提到，要换成支持cpu用AVX2编译的TensorFlow版本。
-
-      > 如果您没有GPU并且希望尽可能多地利用CPU，那么如果您的CPU支持AVX，AVX2和FMA，则应该从针对CPU优化的源构建tensorflow。
-
-      暂时解决方案：忽略它（嘿嘿）
-
-      每次进入python环境时执行下列代码段
-
-      ```python
-      import os
-      os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
-      ```
-
-3. 使用
+2. 使用
    1. 步骤
       * 激活环境（也可以通过anaconda图形界面打开终端），进入pyton
 
@@ -156,4 +126,42 @@
       hello= tf.constant('Hello, TensorFlow!') 
       print(sess.run(hello))
       ```
+
+3. 问题修复
+
+   1. >"Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA"
+
+      ```python
+        >>> w=tf.Variable([[0.5,1.0]])
+        2020-01-31 00:15:50.511182: I tensorflow/core/platform/cpu_feature_guard.cc:142] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+        2020-01-31 00:15:50.527003: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x7f7fc1dcc1a0 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+        2020-01-31 00:15:50.527021: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+      ```
+
+      问题所在：
+
+      [彻底解决“Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA”警告](https://blog.csdn.net/wlwlomo/article/details/82806118)
+
+      [警告：Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA](https://blog.csdn.net/hq86937375/article/details/79696023)
+
+      链接中提到，要换成支持cpu用AVX2编译的TensorFlow版本。
+
+      > 如果您没有GPU并且希望尽可能多地利用CPU，那么如果您的CPU支持AVX，AVX2和FMA，则应该从针对CPU优化的源构建tensorflow。
+
+      暂时解决方案：忽略它（嘿嘿）
+
+      每次进入python环境时执行下列代码段
+
+      ```python
+      import os
+      os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
+      ```
+
+   2. 版本问题
+
+      ```python
+      raise RuntimeError('The Session graph is empty.  Add operations to the '
+      RuntimeError: The Session graph is empty.  Add operations to the graph before calling run().
+      ```
+
       暂时结论： tensorflow版本问题，函数使用方式产生了变更，一种方法是下载对应版本的tf，一种方法是改进使用代码。
