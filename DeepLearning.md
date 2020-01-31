@@ -92,32 +92,14 @@
       > conda deactivate #退出虚拟环境
       ```
 
-      * import tensorflow使用
+      * import tensorflow，导入tf.keras
 
-      ```python
-      >>> import tensorflow as tf
-      >>> a=3
-      >>> w=tf.Variable([[0.5,1.0]])
-      >>> x=tf.Variable([[2.0],[1.0]])
-      >>> y=tf.matmul(w,x)
-      >>> init_op=tf.global_variables_initializer()
-      >>> with tf.Session() as sess:
-      ...     sess.run(init_op)
-      ...     print (y.eval())
-      ...
-      ```
-
-      ```python
-      import tensorflow as tf
-      a=3
-      w=tf.compat.v1.Variable([[0.5,1.0]])
-      x=tf.compat.v1.Variable([[2.0],[1.0]])
-      y=tf.compat.v1.matmul(w,x)
-      init_op=tf.compat.v1.global_variables_initializer()
-      with tf.compat.v1.Session() as sess:
-           sess.run(init_op)
-           print (y.eval())
-      ```
+          ```python
+          import tensorflow as tf
+          from tensorflow.keras import layers
+          print(tf.__version__)
+          print(tf.keras.__version__)
+          ```
 
       ```python
       import tensorflow as tf 
