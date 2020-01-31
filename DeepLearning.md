@@ -47,7 +47,7 @@
        * 另一方面：进化生成模型G，尽量生成与真实数据相似的样本
          * G(z) 噪声z到生成样本空间的映射
 
-### 资料三: A Survey on Deep Learning: Algorithms, Techniques, and Applications
+### 资料三: A Survey on Deep Learning: Algorithms, Techniques, and Applications 深度学习概览：算法，技术和应用
 
 > Deep learning uses multiple layers to represent the abstractions of data to build computational models.
 >
@@ -95,10 +95,6 @@
       ```
 
 2. 使用
-   1. 
-   
-   
-## A Survey on Deep Learning: Algorithms, Techniques, and Applications 深度学习概览：算法，技术和应用
    1. 步骤
       * 激活环境（也可以通过anaconda图形界面打开终端），进入pyton
 
