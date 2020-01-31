@@ -1,8 +1,6 @@
-# 深度学习 / CITtrip项目 /
+# 深度学习 / CITtrip项目 
 
-> 参考资料
-
-大学课业/CITtrip
+> 参考资料 ：CITtrip
 
 ## CITtrip项目
 
@@ -31,11 +29,11 @@
    * 数据集
      * 检测方法在实际中的检测性能效果高度依赖数据集
   
-2. 全连接循环神经网络的入侵检测技术
+2. 全连接循环神经网络的入侵检测技术(略)
 
 3. 生成式对抗网络的入侵检测技术
 
-   * 生成式对抗网络：学习真实数据样本的概率分布
+   * 生成式对抗网络：目的是学习真实数据样本的概率分布
      * 深度生成模型、引入对抗思想，解决样本较少问题
      * 由生成模型和判别模型组成
        * 生成模型为了尽可能模仿真实样本，学习捕捉真实数据样本的概率分布
@@ -51,22 +49,123 @@
 
 ### Tensorflow 使用
 
+[Essential_documentation](https://tensorflow.google.cn/guide/)
+
 1. 安装
    1. 网址 [TensorFlow](https://tensorflow.google.cn/)
    2. 软件需求：python, pip, virtualenv\conda
-   3. 首次安装的版本可能并不契合网络资源所要求的tensorflow和python版本，因此可以使用conda创建虚拟环境选择合适的版本。
+   3. 首次安装的版本可能并不契合网络资源所要求的tensorflow及其所需的python版本，因此可以使用conda创建虚拟环境选择合适的版本。
+   4. 步骤
+      * 下载anaconda_package（包含图形界面，对新手较友好）
 
-   ``` shell
-   > conda create -n venv pip python=3.7  # select python version
-   > source activate venv
-   (venv) > pip install --ignore-installed --upgrade (packageURL)
-   (venv) > pip install --upgrade tensorflow
-   (venv) > source deactivate
-   ```
+      ``` shell
+      > conda --version
+      ```
 
-      [package location](https://tensorflow.google.cn/install/pip#package-location)
+      * 打开terminal，挂上SJTU_vpn
+      * 通过conda创建虚拟环境并初始化python，激活刚刚创建的虚拟环境
+
+      ``` shell
+      > conda create -n venv pip python=3.7
+      > conda activate venv
+      ```
+
+      ``` shell
+      > conda create -n tensorflow3.5 python=3.5
+      > conda activate tensorflow3.5
+      ```
+
+      * 通过pip包管理器，从网址[package location](https://tensorflow.google.cn/install/pip#package-location)安装所需的tensorflow包
+
+      ``` shell
+      (venv) > pip install --ignore-installed --upgrade (packageURL)
+      (venv) > pip install --upgrade tensorflow
+      ```
+
 2. 使用
    1. 
    
    
 ## A Survey on Deep Learning: Algorithms, Techniques, and Applications 深度学习概览：算法，技术和应用
+   1. 步骤
+      * 激活环境（也可以通过anaconda图形界面打开终端），进入pyton
+
+      ``` shell
+      > conda activate venv # 激活虚拟环境
+      > python
+      > conda deactivate #退出虚拟环境
+      ```
+
+      * import tensorflow使用
+
+      ```python
+      >>> import tensorflow as tf
+      >>> a=3
+      >>> w=tf.Variable([[0.5,1.0]])
+      >>> x=tf.Variable([[2.0],[1.0]])
+      >>> y=tf.matmul(w,x)
+      >>> init_op=tf.global_variables_initializer()
+      >>> with tf.Session() as sess:
+      ...     sess.run(init_op)
+      ...     print (y.eval())
+      ...
+      ```
+
+      ```python
+      import tensorflow as tf
+      a=3
+      w=tf.compat.v1.Variable([[0.5,1.0]])
+      x=tf.compat.v1.Variable([[2.0],[1.0]])
+      y=tf.compat.v1.matmul(w,x)
+      init_op=tf.compat.v1.global_variables_initializer()
+      with tf.compat.v1.Session() as sess:
+           sess.run(init_op)
+           print (y.eval())
+      ```
+
+      ```python
+      import tensorflow as tf 
+      tf.compat.v1.disable_eager_execution() 
+      sess=tf.compat.v1.Session() 
+      hello= tf.constant('Hello, TensorFlow!') 
+      print(sess.run(hello))
+      ```
+
+3. 问题修复
+
+   1. >"Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA"
+
+      ```python
+        >>> w=tf.Variable([[0.5,1.0]])
+        2020-01-31 00:15:50.511182: I tensorflow/core/platform/cpu_feature_guard.cc:142] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+        2020-01-31 00:15:50.527003: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x7f7fc1dcc1a0 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+        2020-01-31 00:15:50.527021: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+      ```
+
+      问题所在：
+
+      [彻底解决“Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA”警告](https://blog.csdn.net/wlwlomo/article/details/82806118)
+
+      [警告：Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA](https://blog.csdn.net/hq86937375/article/details/79696023)
+
+      链接中提到，要换成支持cpu用AVX2编译的TensorFlow版本。
+
+      > 如果您没有GPU并且希望尽可能多地利用CPU，那么如果您的CPU支持AVX，AVX2和FMA，则应该从针对CPU优化的源构建tensorflow。
+
+      暂时解决方案：忽略它（嘿嘿）
+
+      每次进入python环境时执行下列代码段
+
+      ```python
+      import os
+      os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
+      ```
+
+   2. 版本问题
+
+      ```python
+      raise RuntimeError('The Session graph is empty.  Add operations to the '
+      RuntimeError: The Session graph is empty.  Add operations to the graph before calling run().
+      ```
+
+      暂时结论： tensorflow版本问题，函数使用方式产生了变更，一种方法是下载对应版本的tf，一种方法是改进使用代码。
