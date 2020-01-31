@@ -1,4 +1,4 @@
-# 深度学习 / CITtrip项目 
+# 深度学习 / CITtrip项目
 
 > 参考资料 ：CITtrip
 
@@ -6,7 +6,7 @@
 
 > 题目：基于深度学习的网络异常行为检测
 
-### 1 基于深度学习的网络异常检测技术研究_尹传龙
+### 资料一: 基于深度学习的网络异常检测技术研究_尹传龙
 
 1. 绪论
 
@@ -47,7 +47,19 @@
        * 另一方面：进化生成模型G，尽量生成与真实数据相似的样本
          * G(z) 噪声z到生成样本空间的映射
 
-### Tensorflow 使用
+### 资料三: A Survey on Deep Learning: Algorithms, Techniques, and Applications
+
+> Deep learning uses multiple layers to represent the abstractions of data to build computational models.
+>
+> The lack of core understanding renders these powerful methods as black-box machines that inhibit development at a fundamental level.
+>
+> Moreover, deep learning has repeatedly been perceived as a silver bullet to all stumbling blocks in machine learning, which is far from the truth.
+
+* introduction
+  * Deep learning, which has its roots from conventional neural networks, significantly outperforms its predecessors. It utilizes graph technologies with transformations among neurons to develop many-layered learning models. 
+  * 深度学习起源于传统的神经网络，其性能明显优于其前辈。它利用图技术以及神经元之间的转换来开发多层学习模型。
+
+### 应用一：Tensorflow 使用
 
 [Essential_documentation](https://tensorflow.google.cn/guide/)
 
@@ -86,11 +98,11 @@
    1. 步骤
       * 激活环境（也可以通过anaconda图形界面打开终端），进入pyton
 
-      ``` shell
-      > conda activate venv # 激活虚拟环境
-      > python
-      > conda deactivate #退出虚拟环境
-      ```
+        ``` shell
+        > conda activate venv # 激活虚拟环境
+        > python
+        > conda deactivate #退出虚拟环境
+        ```
 
       * import tensorflow，导入tf.keras
 
@@ -100,14 +112,6 @@
           print(tf.__version__)
           print(tf.keras.__version__)
           ```
-
-      ```python
-      import tensorflow as tf 
-      tf.compat.v1.disable_eager_execution() 
-      sess=tf.compat.v1.Session() 
-      hello= tf.constant('Hello, TensorFlow!') 
-      print(sess.run(hello))
-      ```
 
 3. 问题修复
 
@@ -128,11 +132,11 @@
 
       链接中提到，要换成支持cpu用AVX2编译的TensorFlow版本。
 
-      > 如果您没有GPU并且希望尽可能多地利用CPU，那么如果您的CPU支持AVX，AVX2和FMA，则应该从针对CPU优化的源构建tensorflow。
+      如果您没有GPU并且希望尽可能多地利用CPU，那么如果您的CPU支持AVX，AVX2和FMA，则应该从针对CPU优化的源构建tensorflow。
 
-      暂时解决方案：忽略它（嘿嘿）
+      暂时解决方案：初学阶段重点在于理解原理，对于效率的提升不是重点，故忽略它（嘿嘿）
 
-      每次进入python环境时执行下列代码段
+      每次进入python环境时执行下列代码段，降低报警频率。
 
       ```python
       import os
