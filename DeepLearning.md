@@ -87,6 +87,7 @@
 
 - DEEP LEARNING NETWORKS：在第2节中，简要介绍了流行的深度学习网络。
   - 本节介绍的深度学习网络与其要点
+
       | DL Networks | Descriptive Key Points                            |
       | ----------- | ------------------------------------------------- |
       | RvNN        | 使用树状结构。 NLP的首选                          |
@@ -96,6 +97,7 @@
       | DBM         | 无监督学习。RBM的复合模型。无向连接               |
       | GAN         | 无监督学习。博弈论框架                            |
       | VAE         | 无监督学习。概率图形模型                          |
+
   - Recursive Neural Network (RvNN)
   - Recurrent Neural Network (RNN)
   - Convolutional Neural Network (CNN)
