@@ -1,18 +1,14 @@
 # 深度学习 / CITtrip项目
 
 - [深度学习 / CITtrip项目](#%e6%b7%b1%e5%ba%a6%e5%ad%a6%e4%b9%a0--cittrip%e9%a1%b9%e7%9b%ae)
-  - [CITtrip项目](#cittrip%e9%a1%b9%e7%9b%ae)
+  - [CITtrip项目：基于深度学习的网络异常行为检测](#cittrip%e9%a1%b9%e7%9b%ae%e5%9f%ba%e4%ba%8e%e6%b7%b1%e5%ba%a6%e5%ad%a6%e4%b9%a0%e7%9a%84%e7%bd%91%e7%bb%9c%e5%bc%82%e5%b8%b8%e8%a1%8c%e4%b8%ba%e6%a3%80%e6%b5%8b)
     - [资料一: 基于深度学习的网络异常检测技术研究_尹传龙](#%e8%b5%84%e6%96%99%e4%b8%80-%e5%9f%ba%e4%ba%8e%e6%b7%b1%e5%ba%a6%e5%ad%a6%e4%b9%a0%e7%9a%84%e7%bd%91%e7%bb%9c%e5%bc%82%e5%b8%b8%e6%a3%80%e6%b5%8b%e6%8a%80%e6%9c%af%e7%a0%94%e7%a9%b6%e5%b0%b9%e4%bc%a0%e9%be%99)
     - [资料三: A Survey on Deep Learning: Algorithms, Techniques, and Applications 深度学习概览：算法，技术和应用](#%e8%b5%84%e6%96%99%e4%b8%89-a-survey-on-deep-learning-algorithms-techniques-and-applications-%e6%b7%b1%e5%ba%a6%e5%ad%a6%e4%b9%a0%e6%a6%82%e8%a7%88%e7%ae%97%e6%b3%95%e6%8a%80%e6%9c%af%e5%92%8c%e5%ba%94%e7%94%a8)
     - [应用一：Tensorflow 使用](#%e5%ba%94%e7%94%a8%e4%b8%80tensorflow-%e4%bd%bf%e7%94%a8)
 
-> 参考资料 ：CITtrip
->
 > 2.1 更新：《深度学习概览：算法，技术和应用》论文学习
 
-## CITtrip项目
-
-> 题目：基于深度学习的网络异常行为检测
+## CITtrip项目：基于深度学习的网络异常行为检测
 
 ### 资料一: 基于深度学习的网络异常检测技术研究_尹传龙
 
