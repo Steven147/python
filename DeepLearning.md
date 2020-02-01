@@ -2,6 +2,8 @@
 
 > 参考资料 ：CITtrip
 
+> 2.1 更新：《深度学习概览：算法，技术和应用》论文学习
+
 ## CITtrip项目
 
 > 题目：基于深度学习的网络异常行为检测
@@ -55,9 +57,49 @@
 >
 > Moreover, deep learning has repeatedly been perceived as a silver bullet to all stumbling blocks in machine learning, which is far from the truth.
 
-* introduction
-  * Deep learning, which has its roots from conventional neural networks, significantly outperforms its predecessors. It utilizes graph technologies with transformations among neurons to develop many-layered learning models. 
-  * 深度学习起源于传统的神经网络，其性能明显优于其前辈。它利用图技术以及神经元之间的转换来开发多层学习模型。
+* INTRODUCTION
+  * 应用：多媒体概念检索，图像分类，视频推荐，社交网络分析，文本挖掘，自然语言处理（NLP），视觉数据处理，语音和音频处理
+  
+    Deep learning, which has its roots from conventional neural networks, significantly outperforms its predecessors. It utilizes graph technologies with transformations among neurons to develop many-layered learning models.
+    深度学习起源于传统的神经网络，其性能明显优于其前辈。它利用图技术以及神经元之间的转换来开发多层学习模型。
+  * feature engineering 传统上，不良的数据表示通常会导致性能降低，因此，特征工程一直是重要的，且局限在特定领域，需要大量的人力
+  * 相比之下，深度学习算法以自动方式执行特征提取，
+
+    These algorithms include a layered architecture of data representation, where the high-level features can be extracted from the last layers of the networks while the low-level features are extracted from the lower layers这些算法包括分层的数据表示架构，高层特征可以从网络的最后一层中提取，而底层要素从较低层提取
+
+    The input is the scene information received from eyes, while the output is the classified objects.我们的大脑可以自动从不同场景中提取数据表示。 输入是从眼睛接收场景信息，而输出是分类对象。
+
+  * History
+    * In 1980, neocogitron was intrduced, which inspired the convolutional neural network
+    * Recurrent Neutal Networks were proposed in 1986
+    * LeNet made the Deep Neural Networks
+    * Deep Belief Networks (DBNs):Its main idea was to train a simple two-layer unsupervised model like Restricted Boltzmann Machines (RBMs), freeze all the parameters, stick a new layer on top, and train just the parameters for the new layer. 它的主要思想是训练一个简单的两层无监督模型，例如Restricted玻尔兹曼机器（RBM），冻结所有参数，在顶部粘贴新层并仅训练新层的参数。
+    * deep learning now is one of the most efficient tools compared to other machinelearning algorithms with great performanc.与其他机器学习相比，深度学习现在是最有效的工具之一
+    * ***从最初的Artificial Neural Networks(ANN)，到Deep Belief Networks DBN，Restricted Boltzmann Machines (RBMs)，Recurrent Neural Networks (RNNs)和Convolutional Neural Networks（CNN）***
+    * 由于大量数据没有标签或带有噪音标签，因此一些研究更多地侧重于使用**无监督或半监督的**深度学习技术来提高训练模块的噪声鲁棒性。
+    * cross-modality structure：由于当前大多数深度学习模型仅关注单一模式，因此导致对真实数据的表示有限。 研究人员现在更加关注跨模式结构
+    * **Google AlphaGo**
+  * Research Objectives and Outline 研究目的和概述
+    * 介绍顶级论文，作者的经验，以及在深度神经网络研究和应用中的突破。
+    * 在我们的调查中，提出了深度学习关键领域中的挑战和机遇，包括并行性，可伸缩性，功能和优化。为了解决上述问题，在不同的领域中引入了不同种类的深度网络，例如用于NLP的RNN和用于图像处理的CNN。 本文还介绍并比较了流行的深度学习工具，包括**Caffe，DeepLearning4j，TensorFlow，Theano和Torch**，以及每种深度学习工具中的优化技术。
+
+* DEEP LEARNING NETWORKS：在第2节中，简要介绍了流行的深度学习网络。
+  * Recursive Neural Network (RvNN)
+  * Recurrent Neural Network (RNN)
+  * Convolutional Neural Network (CNN)
+  * Deep Generative Networks
+* DEEP LEARNING TECHNIQUES AND FRAMEWORKS：第三部分讨论了深度学习中的几种算法，技术和框架。
+  * Unsupervised and Transfer Learning 无监督和转移学习
+  * Online Learning
+  * Optimization Techniques in Deep Learning 深度学习中的优化技术
+  * Deep Learning in Distributed Systems
+  * Deep Lear ning Frameworks
+* VARIOUS APPLICATIONS OF DEEP LEARNING
+  * Natural Language Processing（略）
+  * Visual Data Processing（略）
+  * Speech and Audio Processing（略）
+  * Other Applications（略）
+* DEEP LEARNING CHALLENGES AND FUTURE DIRECTIONS
 
 ### 应用一：Tensorflow 使用
 
