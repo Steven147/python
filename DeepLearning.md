@@ -60,7 +60,7 @@
 > Moreover, deep learning has repeatedly been perceived as a silver bullet to all stumbling blocks in machine learning, which is far from the truth.
 
 - INTRODUCTION
-  - 应用：多媒体概念检索，图像分类，视频推荐，社交网络分析，文本挖掘，自然语言处理（NLP），视觉数据处理，语音和音频处理
+  - 应用：多媒体概念检索，图像分类，视频推荐，社交网络分析，文本挖掘，**自然语言处理（NLP）**，视觉数据处理，语音和音频处理
   
     Deep learning, which has its roots from conventional neural networks, significantly outperforms its predecessors. It utilizes graph technologies with transformations among neurons to develop many-layered learning models.
     深度学习起源于传统的神经网络，其性能明显优于其前辈。它利用图技术以及神经元之间的转换来开发多层学习模型。
