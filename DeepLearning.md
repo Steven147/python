@@ -152,7 +152,7 @@
       - $$ "dz" =  \frac{\partial \mathscr{L}(a,y)}{\partial a}\cdot \frac{\partial a}{\partial z} = (-\frac{y}{a}+\frac{1-y}{1-a})\cdot a(1-a)= a-y$$
       - $$ "d\omega" =  \frac{\partial \mathscr{L}}{\partial \omega}\ = x\cdot "dz"$$
       - $$ "db" =  \frac{\partial \mathscr{L}}{\partial b}\ = "db"$$
-   8. Vectorization 向量化 [Vectorization demo.ipynb](/python/Vectorization%20demo.ipynb)
+   8. Vectorization 向量化 [Vectorization demo.ipynb](/Vectorization%20demo.ipynb)
 
 2. basics of neural network programing
 3. one hidden layer neural networks
