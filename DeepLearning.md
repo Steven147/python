@@ -131,7 +131,7 @@
 
    2. logistic regression 逻辑回归
       - $$x \in R^{n_x} ,  \omega \in R^{n_x}, b \in R $$
-      - $$ z = \omega^Tx+b$$ 
+      - $$ z = \omega^Tx+b$$
       - $$  \hat{y}=a= S(z) \ \  where \ \ S_\theta (z) =  \frac{\mathrm{1} }{\mathrm{1} + e^{- \theta^Tz} }$$
 
    3. logistic regression cost function  逻辑回归损失函数
@@ -146,7 +146,7 @@
    6. Derivatives with a Computation Graph 计算图的导数计算：**复合函数-链式法则**
    7. Logistic Regression Gradient descent 逻辑回归梯度下降法
       - $$ z = \omega^Tx+b$$
-      - $$  \hat{y}=a= S(z)$$ 
+      - $$  \hat{y}=a= S(z)$$
       - $$\mathscr{L}(a,y)= - \ (\ y\ log\ a+(1-y)\ log\ (1-a)\ )$$
       - $$ "da" =  \frac{\partial \mathscr{L}(a,y)}{\partial a} = -\frac{y}{a}+\frac{1-y}{1-a} $$
       - $$ "dz" =  \frac{\partial \mathscr{L}(a,y)}{\partial a}\cdot \frac{\partial a}{\partial z} = (-\frac{y}{a}+\frac{1-y}{1-a})\cdot a(1-a)= a-y$$
