@@ -120,8 +120,12 @@
 
 [【全-中文字幕】深度学习_吴恩达_DeepLearning.ai](https://www.bilibili.com/video/av49445369?p=30)
 
-1. introduction
+[吴恩达机器学习-网易云课堂](https://study.163.com/course/courseLearn.htm?courseId=1004570029#/learn/video?lessonId=1049052745&courseId=1004570029)
 
+1. introduction
+2. 单变量线性回归
+   1. 
+3. 多变量线性回归
    1. binary classification 二分类
       - $$input: X \in R^{n_x\times m}$$
       - $$output:y \in \{0,1\},Y \in R^{1\times m}$$
@@ -151,9 +155,9 @@
       - $$ "db" =  \frac{\partial \mathscr{L}}{\partial b}\ = "db"$$
    8. Vectorization 向量化 [Vectorization demo.ipynb](/Vectorization%20demo.ipynb)
 
-2. basics of neural network programing
-3. one hidden layer neural networks
-4. deep neural networks
+4. basics of neural network programing
+5. one hidden layer neural networks
+6. deep neural networks
 
 ## 应用一：Tensorflow 使用
 
@@ -183,16 +187,22 @@
       > conda activate tensorflow3.5
       ```
 
-      - 通过pip包管理器，从网址[package location](https://tensorflow.google.cn/install/pip#package-location)安装所需的tensorflow包
+      - 通过pip包管理器
+        - 从网址[package location](https://tensorflow.google.cn/install/pip#package-location)安装所需的tensorflow包
 
       ``` shell
       (venv) > pip install --ignore-installed --upgrade (packageURL)
       (venv) > pip install --upgrade tensorflow
       ```
 
+        - 通过[清华源](https://mirror.tuna.tsinghua.edu.cn/help/pypi/)安装
+      ``` shell
+      (venv) > pip install -i https://pypi.tuna.tsinghua.edu.cn/simple tensorflow==1.12.0
+      ```
+
 2. 使用
    1. 步骤
-      - 激活环境（也可以通过anaconda图形界面打开终端），进入pyton
+      - 激活环境（也可以通过anaconda图形界面打开终端），进入python
 
         ``` shell
         > conda activate venv # 激活虚拟环境
