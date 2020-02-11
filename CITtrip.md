@@ -3,7 +3,6 @@
 - [CITtrip项目：基于深度学习的网络异常行为检测](#cittrip%e9%a1%b9%e7%9b%ae%e5%9f%ba%e4%ba%8e%e6%b7%b1%e5%ba%a6%e5%ad%a6%e4%b9%a0%e7%9a%84%e7%bd%91%e7%bb%9c%e5%bc%82%e5%b8%b8%e8%a1%8c%e4%b8%ba%e6%a3%80%e6%b5%8b)
   - [资料一: 基于深度学习的网络异常检测技术研究_尹传龙](#%e8%b5%84%e6%96%99%e4%b8%80-%e5%9f%ba%e4%ba%8e%e6%b7%b1%e5%ba%a6%e5%ad%a6%e4%b9%a0%e7%9a%84%e7%bd%91%e7%bb%9c%e5%bc%82%e5%b8%b8%e6%a3%80%e6%b5%8b%e6%8a%80%e6%9c%af%e7%a0%94%e7%a9%b6%e5%b0%b9%e4%bc%a0%e9%be%99)
   - [资料三: A Survey on Deep Learning: Algorithms, Techniques, and Applications 深度学习概览：算法，技术和应用](#%e8%b5%84%e6%96%99%e4%b8%89-a-survey-on-deep-learning-algorithms-techniques-and-applications-%e6%b7%b1%e5%ba%a6%e5%ad%a6%e4%b9%a0%e6%a6%82%e8%a7%88%e7%ae%97%e6%b3%95%e6%8a%80%e6%9c%af%e5%92%8c%e5%ba%94%e7%94%a8)
-  - [资料：深度学习_吴恩达_DeepLearning](#%e8%b5%84%e6%96%99%e6%b7%b1%e5%ba%a6%e5%ad%a6%e4%b9%a0%e5%90%b4%e6%81%a9%e8%be%bedeeplearning)
   - [应用一：Tensorflow 使用](#%e5%ba%94%e7%94%a8%e4%b8%80tensorflow-%e4%bd%bf%e7%94%a8)
 
 > 2.1 更新：《深度学习概览：算法，技术和应用》论文学习
@@ -115,49 +114,6 @@
   - Speech and Audio Processing（略）
   - Other Applications（略）
 - DEEP LEARNING CHALLENGES AND FUTURE DIRECTIONS：第5节指出了未来的挑战和潜在的研究方向。
-
-## 资料：深度学习_吴恩达_DeepLearning
-
-[【全-中文字幕】深度学习_吴恩达_DeepLearning.ai](https://www.bilibili.com/video/av49445369?p=30)
-
-[吴恩达机器学习-网易云课堂](https://study.163.com/course/courseLearn.htm?courseId=1004570029#/learn/video?lessonId=1049052745&courseId=1004570029)
-
-1. introduction
-2. 单变量线性回归
-   1. 
-3. 多变量线性回归
-   1. binary classification 二分类
-      - $$input: X \in R^{n_x\times m}$$
-      - $$output:y \in \{0,1\},Y \in R^{1\times m}$$
-
-   2. logistic regression 逻辑回归
-      - $$x \in R^{n_x} ,  \omega \in R^{n_x}, b \in R $$
-      - $$ z = \omega^Tx+b$$
-      - $$  \hat{y}=a= S(z) \ \  where \ \ S_\theta (z) =  \frac{\mathrm{1} }{\mathrm{1} + e^{- \theta^Tz} }$$
-
-   3. logistic regression cost function  逻辑回归损失函数
-      - $$ Given\{(x^{(1)},y^{(1)}),\dots,(x^{(1)},y^{(1)})\},\ want\ \hat{y}^{(i)} \approx y^{(i)}$$
-      - $$ Loss(error)\ function:\ \mathscr{L}(\hat{y},y)= - \ (\ y\ log\ \hat{y}+(1-y)\ log\ (1-\hat{y})\ )$$
-      - $$ Cost\ function: J(\omega,b) = \frac{1}{m} \sum_{i=1}^{m}{\mathscr{L}(\hat{y}^{(i)},y^{(i)})}$$
-
-   4. Gradient Descent 梯度下降法
-      - $$want\ to\ find\ \omega,b\ that\ minimize\ J(\omega,b) $$
-      - $$\omega = \omega - \alpha\frac{\partial J(\omega,b)}{\partial \omega},\ b = b - \alpha\frac{\partial J(\omega,b)}{\partial b}, \ \alpha:\ learning\ rate$$
-   5. Computation Graph 计算图
-   6. Derivatives with a Computation Graph 计算图的导数计算：**复合函数-链式法则**
-   7. Logistic Regression Gradient descent 逻辑回归梯度下降法
-      - $$ z = \omega^Tx+b$$
-      - $$  \hat{y}=a= S(z)$$
-      - $$\mathscr{L}(a,y)= - \ (\ y\ log\ a+(1-y)\ log\ (1-a)\ )$$
-      - $$ "da" =  \frac{\partial \mathscr{L}(a,y)}{\partial a} = -\frac{y}{a}+\frac{1-y}{1-a} $$
-      - $$ "dz" =  \frac{\partial \mathscr{L}(a,y)}{\partial a}\cdot \frac{\partial a}{\partial z} = (-\frac{y}{a}+\frac{1-y}{1-a})\cdot a(1-a)= a-y$$
-      - $$ "d\omega" =  \frac{\partial \mathscr{L}}{\partial \omega}\ = x\cdot "dz"$$
-      - $$ "db" =  \frac{\partial \mathscr{L}}{\partial b}\ = "db"$$
-   8. Vectorization 向量化 [Vectorization demo.ipynb](/Vectorization%20demo.ipynb)
-
-4. basics of neural network programing
-5. one hidden layer neural networks
-6. deep neural networks
 
 ## 应用一：Tensorflow 使用
 
