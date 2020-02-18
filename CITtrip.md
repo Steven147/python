@@ -3,7 +3,8 @@
 > 2.1 更新：《深度学习概览：算法，技术和应用》论文学习
 >
 > 2.2 更新：吴恩达-深度学习-bilibili
-> 2.18 
+> 
+> 2.18 更新：《网络异常检测技术概述》论文学习 + tensorflow_keras学习
 > 
 ## 资料一: 基于深度学习的网络异常检测技术研究_尹传龙
 
@@ -109,6 +110,42 @@
   - Speech and Audio Processing（略）
   - Other Applications（略）
 - DEEP LEARNING CHALLENGES AND FUTURE DIRECTIONS：第5节指出了未来的挑战和潜在的研究方向。
+
+## 资料八：A survey of network anomaly detection techniques 网络异常检测技术概述
+
+1. 介绍
+   1. 异常检测：数据挖掘任务 又称 utlier detection, novelty detection，deviation detection and exception mining.
+   2. 异常：一个`与众不同`、疑似是`由不同的机制所产生`的观察结果
+   3. 研究的挑战：异常检测技术普适性差（有线网-无线网）、噪声、缺乏labeled dataset
+   4. 标准：计算复杂度、攻击检测优先级、输出
+2. 前言
+   1. 异常类型
+      1. 点异常：
+      2. 上下文异常：圣诞节交通量高在上下文中是正常的
+      3. 集体异常：低心电图
+   2. 异常检测技术的输出
+      1. score
+      2. label
+   3. 网络攻击的类型
+      1. 拒绝服务DoS攻击：server is flooded with numerous connection requests.
+      2. 探针：探查攻击，对主机和网络攻击的第一步
+      3. 用户到根U2R：获取super账户访问权限
+      4. 远程用户R2U：
+   4. 对异常的网络攻击进行分类  
+      1. DoS：集体异常  
+      2. 探测攻击：上下文异常
+      3. 用户到根U2R，远程用户R2U：点异常
+3. 基于分类的网络异常检测
+   1. 支持向量机
+      1. 寻找最优超平面，最大化分离
+      2. `监督学习`！，
+      3. 实例：正常活动下，有一组注册表项会被访问，
+   2. 贝叶斯网络
+4. 统计异常检测
+5. 信息理论
+6. 聚类
+7. 入侵检测
+8. 评估
 
 ## 应用一：Tensorflow 使用
 
