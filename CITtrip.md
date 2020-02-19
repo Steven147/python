@@ -7,8 +7,7 @@
 > 2.18 更新：《网络异常检测技术概述》论文学习 + tensorflow_keras学习
 >
 > 2.19 更新：《生成式对抗网络GAN的研究进展与展望_王坤峰》论文学习 + GAN模型损失函数理解 + tensorflow_keras学习2
->
-> 2.10
+> 
 
 ## 资料一: 基于深度学习的网络异常检测技术研究_尹传龙
 
@@ -318,3 +317,5 @@
       暂时结论： tensorflow版本问题，函数使用方式产生了变更，一种方法是下载对应版本的tf，一种方法是改进使用代码。
 
 ## 应用二：tensorflow.keras
+
+[tensorflow-tutorials](https://tensorflow.google.cn/tutorials)
