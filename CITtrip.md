@@ -7,7 +7,7 @@
 > 2.18 更新：《网络异常检测技术概述》论文学习 + tensorflow_keras学习
 >
 > 2.19 更新：《生成式对抗网络GAN的研究进展与展望_王坤峰》论文学习 + GAN模型损失函数理解 + tensorflow_keras学习2
-> 
+> 2.20 更新：《基于深度卷积神经网络的网络流量分类方法》《卷积神经网络研究综述_周飞燕》论文学习 + tensorflow_keras学习3
 
 ## 资料一: 基于深度学习的网络异常检测技术研究_尹传龙
 
@@ -51,7 +51,7 @@
          - G(z) 噪声z到生成样本空间的映射
          - 目的：改善G，使D(G(z))增大
 
-## 资料三: A Survey on Deep Learning: Algorithms, Techniques, and Applications 深度学习概览：算法，技术和应用
+## 资料二: A Survey on Deep Learning: Algorithms, Techniques, and Applications 深度学习概览：算法，技术和应用
 
 > Deep learning uses multiple layers to represent the abstractions of data to build computational models.
 >
@@ -115,7 +115,7 @@
   - Other Applications（略）
 - DEEP LEARNING CHALLENGES AND FUTURE DIRECTIONS：第5节指出了未来的挑战和潜在的研究方向。
 
-## 资料八：A survey of network anomaly detection techniques 网络异常检测技术概述
+## 资料三：A survey of network anomaly detection techniques 网络异常检测技术概述
 
 1. 介绍
    1. 异常检测：数据挖掘任务 又称 utlier detection, novelty detection，deviation detection and exception mining.
@@ -161,7 +161,7 @@
    2. 当代网络攻击评估数据集：ADFA-LD12
 8. 评估
 
-## 资料九：生成式对抗网络GAN的研究进展与展望_王坤峰
+## 资料四：生成式对抗网络GAN的研究进展与展望_王坤峰
 
 1. GAN提出背景
    1. 生成式模型：通过生成方法（对数据分布的学习）得到的模型
@@ -217,6 +217,68 @@
    1. 作为一种`生成式方法`, 有效解决了可建立自然性解释的数据的生成难题
    2. 将两个神经网络的对抗作为训练准则并且可以使用反向传播进行训练, 训练过程不需要效率较低的马尔科夫链方法, 也不需要做各种近似推理, 没有复杂的变分下界,
 
+## 资料五：基于深度卷积神经网络的网络流量分类方法
+
+1. 引言
+   1. 在网络流量分类领域的机器学习算法可以分为浅层学习和深度学习
+   2. 浅层学习主要包括:支持向量机、决策树、 贝叶斯和 k-means
+   3. 深度学习主要包括`**深度置信网络**`、`**卷积神经网络**`和`**递归神经网络**`等
+   4. 基于离差标准化的卷积神经网络 min-max normalization convolutional neural network
+2. 流量分类问题及描述
+   1. 总体流程包括
+      1. 网络数据的采集 现有的数据集 网络协议数据分析工具
+      2. 带有准确背景信息数据集的生成
+      3. 数据集的预处理，
+      4. 流量特征的提取以及分类
+   2. 采用卷积神经网络，构造合适的特征空间
+      1. 对数据集进行数据预处理：将网络流量数据转化为灰度图片
+      2. 将灰度图片作为卷积神经网络的输入数据进行学习
+3. 基于改进卷积神经网络的网络流量分类方法
+   1. 网络流量数据集的构建
+      1. Moore 数据集
+      2. 实际数据集
+   2. 数据预处理
+      1. 归一化：消除特征值的量纲，具有可比性
+      2. 将构建好的矩阵中的每个元素作为一个像素点，矩阵中的值作为像素的灰度（白的程度
+   3. 卷积神经网络
+      1. 输入层、卷积层、池化层、全连接层、输出层
+         1. 卷积层是卷积神经网络中最重要的一部分？
+         2. 池化层也称为采样层？
+         3. 全连接层通常位于卷积神经网络模型的最后位置，作用是计算网络的最终输出结果
+   4. 训练过程
+      1. 卷积层的前向传播形式为 激活函数为 ReLU 函数（去除负数
+      2. 反向传播算法和BP神经网络类似，代价函数
+   5. 改进的卷积神经网络结构
+4. 实验测试与结果分析
+
+## 资料六：《卷积神经网络研究综述_周飞燕.pdf》
+
+[大白话讲解卷积神经网络工作原理](https://www.bilibili.com/video/av35087157/?spm_id_from=333.788.videocard.0)
+
+1. 引言
+   1. 人工神经元网络 (Artificial Neural Network，ANN)是对生物神经网络的一种模拟和近似
+   2. 反向传播网络 (Back Propagation Network，BP网络) **损失函数** => **通过训练自己得出卷积核**
+   3. 逐层预训练 ”(layer-wise pre-training)
+      1. 每次只无监督训练一层
+      2. 将该层的训练结果作为其下一层的输入
+      3. 有监督学习(BP算法)微调预训练好的网络
+2. CNN概述
+   1. 神经元：输入 权重 偏置 激励 输出
+   2. 多层感知器：输入层、隐含层(一层或者多层)及输出层
+   3. CNN
+      1. 生物视觉感知
+      2. 卷积层：通过`卷积核`提取出特征面，越高卷积层提取更高级的特征
+      3. 池化层：降低特征面的分辨率
+         1. 最大池化
+         2. 平均池化
+      4. 全连接层：用BP网络训练得到`权重`后，可导出分类结果
+      5. `特征面`：根据实际应用进行设置
+      6. 初始参数的确定（人为确定框架：找现成
+         1. 卷积核数目、尺寸
+         2. 池化大小、池化步长
+         3. 全链接层神经元数量
+3. 改进算法
+
 ## 应用一：Tensorflow install
 
 [Essential_documentation](https://tensorflow.google.cn/guide/)
@@ -254,6 +316,7 @@
       ```
 
         - 通过[清华源](https://mirror.tuna.tsinghua.edu.cn/help/pypi/)安装
+
       ``` shell
       (venv) > pip install -i https://pypi.tuna.tsinghua.edu.cn/simple tensorflow==1.12.0
       ```
