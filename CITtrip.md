@@ -383,3 +383,14 @@
 ## 应用二：tensorflow.keras
 
 [tensorflow-tutorials](https://tensorflow.google.cn/tutorials)
+
+1. QuickStart 
+2. Keras 
+3. Load data 
+4. Estimator 
+5. Customization
+6. Distributed training
+7. Images
+8. Text
+9. Structure data
+10. Generative
