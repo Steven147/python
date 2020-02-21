@@ -7,8 +7,10 @@
 > 2.18 更新：《网络异常检测技术概述》论文学习 + tensorflow_keras学习
 >
 > 2.19 更新：《生成式对抗网络GAN的研究进展与展望_王坤峰》论文学习 + GAN模型损失函数理解 + tensorflow_keras学习2
-> 
+>
 > 2.20 更新：《基于深度卷积神经网络的网络流量分类方法》《卷积神经网络研究综述_周飞燕》论文学习 + tensorflow_keras学习3
+> 
+> 2.21 更新：基于 tensorflow keras 的卷积神经网络实现 + tensorflow_gpu_for_mac install
 
 ## 资料一: 基于深度学习的网络异常检测技术研究_尹传龙
 
@@ -384,10 +386,10 @@
 
 [tensorflow-tutorials](https://tensorflow.google.cn/tutorials)
 
-1. QuickStart 
-2. Keras 
-3. Load data 
-4. Estimator 
+1. QuickStart
+2. Keras
+3. Load data
+4. Estimator
 5. Customization
 6. Distributed training
 7. Images
