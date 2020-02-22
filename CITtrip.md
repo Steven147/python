@@ -9,8 +9,10 @@
 > 2.19 更新：《生成式对抗网络GAN的研究进展与展望_王坤峰》论文学习 + GAN模型损失函数理解 + tensorflow_keras学习2
 >
 > 2.20 更新：《基于深度卷积神经网络的网络流量分类方法》《卷积神经网络研究综述_周飞燕》论文学习 + tensorflow_keras学习3
-> 
+>
 > 2.21 更新：基于 tensorflow keras 的卷积神经网络实现 + tensorflow_gpu_for_mac install
+>
+> 2.22 更新：《基于深度置信网络的入侵检测模型》 论文学习 + tensorflow keras 学习
 
 ## 资料一: 基于深度学习的网络异常检测技术研究_尹传龙
 
@@ -282,6 +284,25 @@
          3. 全链接层神经元数量
 3. 改进算法
 
+## 资料七：基于深度置信网络的入侵检测模型
+
+[深度信念神经网络DBN最通俗易懂的教程](https://blog.csdn.net/u013631121/article/details/76794829?depth_1-utm_source=distribute.pc_relevant.none-task&utm_source=distribute.pc_relevant.none-task)
+
+[Deep Learning（深度学习）学习笔记整理系列](https://blog.csdn.net/zouxy09/article/details/8775360)
+
+1. 引言
+2. 深度置信网络
+   1. 由几个RBM和一层BP神经网络组成
+   2. Restricting Boltzmann machine
+      1. 一种两层随机神经网络
+      2. 视觉层（v）
+      3. 隐藏层（h）
+      4. 能量函数
+   3. BP神经网络
+3. 入侵检测模型
+4. 仿真与分析
+
+
 ## 应用一：Tensorflow install
 
 [Essential_documentation](https://tensorflow.google.cn/guide/)
@@ -290,7 +311,8 @@
    1. 网址 [TensorFlow](https://tensorflow.google.cn/)
    2. 软件需求：python, pip, virtualenv\conda
    3. 首次安装的版本可能并不契合网络资源所要求的tensorflow及其所需的python版本，因此可以使用conda创建虚拟环境选择合适的版本。
-   4. 步骤
+   4. tensorflow gpu 需要nvida显卡的支持，新款macbook搭载的是amd显卡，因此gpu版本安装问题无解
+   5. 步骤
       - 下载anaconda_package（包含图形界面，对新手较友好）
 
       ``` shell
@@ -386,6 +408,8 @@
 
 [tensorflow-tutorials](https://tensorflow.google.cn/tutorials)
 
+[Keras 快速搭建神经网络 (莫烦 Python 教程)](https://www.bilibili.com/video/av16910214)
+
 1. QuickStart
 2. Keras
 3. Load data
@@ -393,6 +417,56 @@
 5. Customization
 6. Distributed training
 7. Images
+   1. CNN
+      - [tf.keras.layers.Conv2D](https://tensorflow.google.cn/api_docs/python/tf/keras/layers/Conv2D)
+        - filters 输出空间future map的维数/层数/高度、过滤器（卷积核）的数量
+        - kernel_size 卷积核大小
+        - strides 步长
+        - activation 激活函数
+        - 作为第一层需要额外提供，例如input_shape=(128, 128, 3) 用于中的128x128 RGB图片
+      - [tf.keras.layers.MaxPool2D](https://tensorflow.google.cn/api_docs/python/tf/keras/layers/MaxPool2D)
+        - pool_size (2, 2)将在两个空间维度上将输入减半
+        - strides 步长 默认为上值
+      - 输出形状： 具有形状的4D张量： (samples, filters, new_rows, new_cols)
+
+      ```py
+      model = models.Sequential()
+      model.add(layers.Conv2D(32, (3, 3), activation='relu', input_shape=(32, 32, 3)))
+      model.add(layers.MaxPooling2D((2, 2)))
+      model.add(layers.Conv2D(64, (3, 3), activation='relu'))
+      model.add(layers.MaxPooling2D((2, 2)))
+      model.add(layers.Conv2D(64, (3, 3), activation='relu'))
+      model.add(layers.Flatten()) # input 4*4*64 output 1024
+      model.add(layers.Dense(64, activation='relu'))
+      model.add(layers.Dense(10))
+      model.summary()
+
+      Model: "sequential_1"
+      _________________________________________________________________
+      Layer (type)                 Output Shape              Param #
+      =================================================================
+      conv2d_3 (Conv2D)            (None, 30, 30, 32)        896
+      _________________________________________________________________
+      max_pooling2d_2 (MaxPooling2 (None, 15, 15, 32)        0
+      _________________________________________________________________
+      conv2d_4 (Conv2D)            (None, 13, 13, 64)        18496
+      _________________________________________________________________
+      max_pooling2d_3 (MaxPooling2 (None, 6, 6, 64)          0
+      _________________________________________________________________
+      conv2d_5 (Conv2D)            (None, 4, 4, 64)          36928
+      _________________________________________________________________
+      flatten_1 (Flatten)          (None, 1024)              0
+      _________________________________________________________________
+      dense_2 (Dense)              (None, 64)                65600
+      _________________________________________________________________
+      dense_3 (Dense)              (None, 10)                650
+      =================================================================
+      Total params: 122,570
+      Trainable params: 122,570
+      Non-trainable params: 0
+      _________________________________________________________________
+      ```
+
 8. Text
 9. Structure data
 10. Generative
