@@ -12,7 +12,11 @@
 >
 > 2.21 更新：基于 tensorflow keras 的卷积神经网络实现 + tensorflow_gpu_for_mac install
 >
-> 2.22 更新：《基于深度置信网络的入侵检测模型》 论文学习 + tensorflow keras 学习
+> 2.22 更新：《基于深度置信网络的入侵检测模型》论文学习 + tensorflow keras 学习
+>
+> 2.23 更新：tensorflow keras
+
+## 信息安全竞赛安排
 
 ## 资料一: 基于深度学习的网络异常检测技术研究_尹传龙
 
@@ -301,7 +305,6 @@
    3. BP神经网络
 3. 入侵检测模型
 4. 仿真与分析
-
 
 ## 应用一：Tensorflow install
 
