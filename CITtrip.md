@@ -17,6 +17,8 @@
 > 2.23 更新：tensorflow keras
 >
 > 2.25 更新：《基于深度学习的网络流量分类及异常检测方法研究_王伟》 + 网络流量dataset组成 学习
+>
+> 2.26 更新：反向传播算法bp理解
 
 ## 信息安全竞赛安排
 
@@ -329,6 +331,62 @@
       3. 加密流量分类
    2. 网络流量异常检测方法
    3. 深度学习
+
+## 资料九：[读懂反向传播算法（bp算法）](https://www.jianshu.com/p/74bb815f612e)
+
+| 结构       | 神经元出    | 神经元入                                 | 神经元出 | 神经元入                                       |
+| ---------- | ----------- | ---------------------------------------- | -------- | ---------------------------------------------- |
+| 位置 层    | $l-1$       | $l$                                      | $l$      | $l+1$                                          |
+| 位置 行    | $k$         | $j$                                      | $j$      | $i$                                            |
+| 变量(向量) | $a_k^{l-1}$ | $a_k^{l-1}(A^{l-1})$                     | $a_j^{l}$ | $a_j^{l}(A^{l})$                               |
+| 参数(向量) |             | $\omega_{jk}^{l}(W_{j}^{l})$ , $b_j^{l}$ |          | $\omega_{ij}^{l+1}(W_{i}^{l+1})$ , $b_i^{l+1}$ |
+
+`正向运算过程：`
+
+- 神经元变量输入：$a_k^{l-1}$
+
+- 神经元参数输入：$\omega_{jk}^{l}$，$b_j^{l}$
+  > $k$取值范围为上一层神经元数，$j$对于单一神经元取值唯一
+- 神经元处理：
+
+  - $z_j^{l} = W_{j\_}^{l}\cdot A^{l-1}+b_j^{l}$
+    > $a_k^{l-1}$,$\omega_{jk}^{l}$ 排成$k$维列向量 $A^{l-1}$,$W_{j\_}^{l}$
+    >
+    > 输入值对$l$层的任意神经元$j$都相同，故用$A^{l-1}$ 统一表示
+  - $a_j^{l} = \sigma(z_j^{l})$
+
+- 神经元输出：$a_j^{l} = \sigma(z_j^{l})$
+
+`反向处理过程：`
+
+- 损失函数：$C(A^{L})$
+  > L为总层数
+- 定义：$\delta_{j}^{l} \equiv \frac{\partial C}{\partial z_j^{l}},\Delta^{l} \equiv \frac{\partial C}{\partial Z^{l}}$
+  > 对$l$层$j$个神经元而言，中间变量$\delta_{j}^{l}$为**损失函数**对**未激活的输出值**的偏微分
+
+- 计算：
+
+  - 递推公式：$\delta_{j}^{l} =\frac{\partial C}{\partial Z^{l+1}}\cdot \frac{\partial Z^{l+1}}{\partial z_j^{l}} = \Delta^{l+1} \cdot W_{\_j}^{l+1} \cdot \sigma^{,}(z_j^{l})$
+    > $z_i^{l+1},\delta_i^{l+1},\omega_{ij}^{l+1}$ 排成$j$维列向量 $Z^{l+1},\Delta^{l+1},W_{\_j}^{l+1}$
+    >
+    > $W_{\_j}^{l+1}$ 由所有从神经元$j$指出去的边的权重$\omega_{ij}^{l+1}$排成
+    >
+    > 与上文由所有指向神经元$j$的边的权重$\omega_{kj}^{l}$不同！！
+  - 末值：$\delta_{j}^{L} =\frac{\partial C}{\partial A^{L}}\cdot \frac{\partial A^{L}}{\partial z_j^{L}}$
+    > 特例为单输出值情况
+    >
+    > $\frac{\partial C}{\partial a^{L}}$ 取决于损失函数形式，一般为$\frac{1-y}{1-a^{L}}-\frac{y}{a^{L}}$
+    >
+    > $\frac{\partial a^{L}}{\partial z^{L}}$ 取决于激活函数形式，sigmoid时为$a^{L}\cdot(1-a^{L})$
+    >
+    > $\delta^{L} = a^{L} - y$
+
+  - 用法：
+
+    - $\frac{\partial C}{\partial \omega_{jk}^{l}} = \frac{\partial C}{\partial z_{j}^{l}} \cdot \frac{\partial z_{j}^{l}}{\partial \omega_{jk}^{l}} = \delta_{j}^{L} \cdot a_{k}^{l-1}$
+  
+    - $\frac{\partial C}{\partial b_{j}^{l}} = \frac{\partial C}{\partial z_{j}^{l}} \cdot \frac{\partial z_{j}^{l}}{\partial b_{j}^{l}} = \delta_{j}^{L}$
+
 
 ## 应用一：Tensorflow install
 
