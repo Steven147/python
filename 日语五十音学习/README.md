@@ -4,9 +4,9 @@
 
 ### 途径一
 
-- 类Unix系统下载（适用于Linux、macOS）
+- 类Unix系统[下载](https://github.com/Steven147/python/raw/master/%E6%97%A5%E8%AF%AD%E4%BA%94%E5%8D%81%E9%9F%B3%E5%AD%A6%E4%B9%A0/aiueo)（适用于Linux、macOS）
 
-- Windows系统下载
+- Windows系统[下载](https://github.com/Steven147/python/raw/master/%E6%97%A5%E8%AF%AD%E4%BA%94%E5%8D%81%E9%9F%B3%E5%AD%A6%E4%B9%A0/aiueo.exe)
 
 ## 功能
 
@@ -14,17 +14,17 @@
 
 1. 按键一(NEW!)：生成一个假名的罗马字表示
 
-    ![NEW!](/python/日语五十音学习/2020-02-2813514.gif)
+    ![](2020-02-2813514.gif)
 
 2. 按键二(Answer?)：显示对应的平假名、片假名
 
-    ![NEW!](/python/日语五十音学习/2020-02-2813908.gif)
+    ![](2020-02-2813908.gif)
 
 3. 按键三(Testing/Learning)：切换测试/学习状态
    1. 测试状态下默认隐藏答案
    2. 学习状态下会始终显示答案
 
-      ![NEW!](/python/日语五十音学习/2020-02-2814230.gif)
+      ![](2020-02-2814230.gif)
 
 ## 实现（以下是我的絮絮叨叨
 
@@ -46,6 +46,7 @@
       ```shell
       > python3 /.../aiueo.py #python3，空格，加上程序文件的路径（可将程序拖入命令行生成路径
       ```
+具体实现步骤
 
 - 已实现功能
   - 随机生成罗马音组合
