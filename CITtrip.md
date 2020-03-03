@@ -19,6 +19,8 @@
 > 2.25 更新：《基于深度学习的网络流量分类及异常检测方法研究_王伟》 + 网络流量dataset组成 学习
 >
 > 2.26 更新：反向传播算法bp理解
+>
+> 2.29 更新：tensorflow keras 学习
 
 ## 信息安全竞赛安排
 
@@ -386,7 +388,6 @@
     - $\frac{\partial C}{\partial \omega_{jk}^{l}} = \frac{\partial C}{\partial z_{j}^{l}} \cdot \frac{\partial z_{j}^{l}}{\partial \omega_{jk}^{l}} = \delta_{j}^{L} \cdot a_{k}^{l-1}$
   
     - $\frac{\partial C}{\partial b_{j}^{l}} = \frac{\partial C}{\partial z_{j}^{l}} \cdot \frac{\partial z_{j}^{l}}{\partial b_{j}^{l}} = \delta_{j}^{L}$
-
 
 ## 应用一：Tensorflow install
 
