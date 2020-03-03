@@ -9,7 +9,6 @@ romaji = ['a','i','u','e','o','ka','ki','ku','ke','ko','sa','si','su','se','so',
 show = 0
 show2 = 0
 
-
 def showVar(flag=True):
     global show
     if flag:

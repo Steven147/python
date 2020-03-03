@@ -4,31 +4,42 @@
 
 ### 途径一
 
-- 类Unix系统[下载](https://github.com/Steven147/python/raw/master/%E6%97%A5%E8%AF%AD%E4%BA%94%E5%8D%81%E9%9F%B3%E5%AD%A6%E4%B9%A0/aiueo.zip)（适用于Linux、macOS）
+- SJTU交大云盘
+  - 类Unix系统[下载](https://jbox.sjtu.edu.cn/l/snpjoV)（适用于Linux、macOS）
+  - ~~Windows系统[下载](https://github.com/Steven147/python/raw/master/%E6%97%A5%E8%AF%AD%E4%BA%94%E5%8D%81%E9%9F%B3%E5%AD%A6%E4%B9%A0/aiueo.exe)~~
 
-- Windows系统[下载](https://github.com/Steven147/python/raw/master/%E6%97%A5%E8%AF%AD%E4%BA%94%E5%8D%81%E9%9F%B3%E5%AD%A6%E4%B9%A0/aiueo.exe)
+- Gihub途径
+  - 类Unix系统[下载](https://github.com/Steven147/python/raw/master/%E6%97%A5%E8%AF%AD%E4%BA%94%E5%8D%81%E9%9F%B3%E5%AD%A6%E4%B9%A0/aiueo.zip)（适用于Linux、macOS）
+  - Windows系统[下载](https://github.com/Steven147/python/raw/master/%E6%97%A5%E8%AF%AD%E4%BA%94%E5%8D%81%E9%9F%B3%E5%AD%A6%E4%B9%A0/aiueo.exe)
 
 ## 功能
+
+> 更新：UI放大，增加学习发音和学习字符功能，增加切换平假名片假名显示
 
 ### ***核心思想：随机产生五十音进行辨识***
 
 1. 按键一(NEW!)：生成一个假名的罗马字表示
 
-    ![](1.gif)
+2. 按键二(Answer?)：显示答案
 
-2. 按键二(Answer?)：显示对应的平假名、片假名
+3. 按键三(Learning/Character Testing/Pronouce Testing)：切换学习/字符测试/发音测试状态
+   1. 学习状态下会始终显示罗马音和假名
+   2. 字符测试状态下只显示罗马音，按下`Answer？`显示答案
+   3. 发音测试状态下只显示假名，按下`Answer？`显示答案
 
-    ![](2.gif)
+4. 按键四：切换假名显示
 
-3. 按键三(Testing/Learning)：切换测试/学习状态
-   1. 测试状态下默认隐藏答案
-   2. 学习状态下会始终显示答案
+![](image.png)
 
-      ![](3.gif)
+---
+---
+---
+---
+---
+---
+## 以下是我的絮絮叨叨
 
-## 实现（以下是我的絮絮叨叨
-
-~~下载途径二（硬核~~
+### ~~途径二~~
 
 1. 下载完整的repository文件，建议采用zip格式
 2. 安装python
@@ -46,6 +57,7 @@
       ```shell
       > python3 /.../aiueo.py #python3，空格，加上程序文件的路径（可将程序拖入命令行生成路径
       ```
+
 具体实现步骤
 
 - 已实现功能
@@ -64,5 +76,7 @@
    2. 按键二(Answer?)：显示对应的平假名、片假名
    3. 按键三：开启始终显示/关闭始终显示
 3. 交互实现
+
+
 
 https://cloudconvert.com/mov-to-gif
