@@ -55,13 +55,16 @@ def botton3():
     show = (show + 1) % 3
     if(show == 0): 
         var3.set("Learning")
-        var2.set(mystr[value]+' '+mystr2[value])
+        showVar()
+        showVar2()
     elif(show == 1):
         var3.set('Character Testing')
-        var2.set('')
+        showVar()
+        showVar2(False)
     else:
         var3.set('Pronouce Testing')
-        var.set('')
+        showVar(False)
+        showVar2()
 
 #botton4
 def botton4():
