@@ -21,6 +21,8 @@
 > 2.26 更新：反向传播算法bp理解
 >
 > 2.29 更新：tensorflow keras 学习
+>
+> 3.6 更新：本地程序运行 用tf.keras实现GAN网络
 
 ## 信息安全竞赛安排
 
@@ -509,6 +511,7 @@
         - kernel_size 卷积核大小
         - strides 步长
         - activation 激活函数
+        - use_bias 是否使用偏置向量b，默认为true
         - 作为第一层需要额外提供，例如input_shape=(128, 128, 3) 用于中的128x128 RGB图片
       - [tf.keras.layers.MaxPool2D](https://tensorflow.google.cn/api_docs/python/tf/keras/layers/MaxPool2D)
         - pool_size (2, 2)将在两个空间维度上将输入减半
@@ -518,6 +521,8 @@
       ```py
       model = models.Sequential()
       model.add(layers.Conv2D(32, (3, 3), activation='relu', input_shape=(32, 32, 3)))
+      #卷积核长与宽自己定，层数由输入图片层数决定，偏置bias b_i[1,1,1]，然后输出一张图 w_i[3,3,3]
+      #输出次数自定 i[32]
       model.add(layers.MaxPooling2D((2, 2)))
       model.add(layers.Conv2D(64, (3, 3), activation='relu'))
       model.add(layers.MaxPooling2D((2, 2)))
@@ -531,15 +536,15 @@
       _________________________________________________________________
       Layer (type)                 Output Shape              Param #
       =================================================================
-      conv2d_3 (Conv2D)            (None, 30, 30, 32)        896
+      conv2d_3 (Conv2D)            (None, 30, 30, 32)        896 = (3*3*3+1)*32
       _________________________________________________________________
       max_pooling2d_2 (MaxPooling2 (None, 15, 15, 32)        0
       _________________________________________________________________
-      conv2d_4 (Conv2D)            (None, 13, 13, 64)        18496
+      conv2d_4 (Conv2D)            (None, 13, 13, 64)        18496 = (3*3*32+1)*64
       _________________________________________________________________
       max_pooling2d_3 (MaxPooling2 (None, 6, 6, 64)          0
       _________________________________________________________________
-      conv2d_5 (Conv2D)            (None, 4, 4, 64)          36928
+      conv2d_5 (Conv2D)            (None, 4, 4, 64)          36928 = (3*3*64+1)*64
       _________________________________________________________________
       flatten_1 (Flatten)          (None, 1024)              0
       _________________________________________________________________
@@ -556,3 +561,187 @@
 8. Text
 9. Structure data
 10. Generative
+    1. DCGan
+       1. [batch nomolization](https://tensorflow.google.cn/api_docs/python/tf/keras/layers/BatchNormalization)
+          - [【 深度学习李宏毅 】 Batch Normalization （中文）](https://www.bilibili.com/video/av16540598/)
+          - normalization 意义：损失函数对范围大数值对应参数w更敏感，需要不同对学习速率/同化到相同范围
+            - 后层的变化总是落后与前层变化
+            - 保证每个layer输出相对固定，
+            - 问题？但每个layer输出的mean和variant是不断变化的
+          - batch normalization：可以调大rate加快训练速度，解决vanishing gradient
+            - 可以在激活前后应用（推荐先normalization后activation：让值落在零的附近再激活效果较好）
+            - batch 一串 把多个样本
+            - 对每个layer的一串输出z求出z均值和z方差，然后根据均值和方差进行normalization
+            - 如何bp？z均值和z方差也视为变量，而normalization后可以进行放缩和平移（常量）
+            - training时的z均值和z方差在不断变化，在考虑正确率作为权重
+
+   ```py
+   #generator
+   def make_generator_model():
+      model = tf.keras.Sequential()
+      model.add(layers.Dense(7*7*256, use_bias=False, input_shape=(100,)))
+      model.add(layers.BatchNormalization())
+      model.add(layers.LeakyReLU())
+
+      model.add(layers.Reshape((7, 7, 256)))
+      assert model.output_shape == (None, 7, 7, 256) # Note: None is the batch size
+
+      model.add(layers.Conv2DTranspose(128, (5, 5), strides=(1, 1), padding='same', use_bias=False))
+      # b=0: not use bias
+      assert model.output_shape == (None, 7, 7, 128)
+      model.add(layers.BatchNormalization())
+      model.add(layers.LeakyReLU())
+
+      model.add(layers.Conv2DTranspose(64, (5, 5), strides=(2, 2), padding='same', use_bias=False))
+      assert model.output_shape == (None, 14, 14, 64)
+      model.add(layers.BatchNormalization())
+      model.add(layers.LeakyReLU())
+
+      model.add(layers.Conv2DTranspose(1, (5, 5), strides=(2, 2), padding='same', use_bias=False, activation='tanh'))
+      assert model.output_shape == (None, 28, 28, 1)
+
+      return model
+
+   generator = make_generator_model()
+   _________________________________________________________________
+   Layer (type)                 Output Shape              Param #
+   =================================================================
+   dense (Dense)                (None, 12544)             1254400 = 7*7*256*100
+   _________________________________________________________________
+   batch_normalization (BatchNo (None, 12544)             50176 = 12544*4????
+   _________________________________________________________________
+   leaky_re_lu (LeakyReLU)      (None, 12544)             0
+   _________________________________________________________________
+   reshape (Reshape)            (None, 7, 7, 256)         0
+   _________________________________________________________________
+   conv2d_transpose (Conv2DTran (None, 7, 7, 128)         819200 = (5*5*256+0)*128
+   _________________________________________________________________
+   batch_normalization_1 (Batch (None, 7, 7, 128)         512 = 128*4
+   _________________________________________________________________
+   leaky_re_lu_1 (LeakyReLU)    (None, 7, 7, 128)         0
+   _________________________________________________________________
+   conv2d_transpose_1 (Conv2DTr (None, 14, 14, 64)        204800 = (5*5*128+0)*64
+   _________________________________________________________________
+   batch_normalization_2 (Batch (None, 14, 14, 64)        256 = 64*4
+   _________________________________________________________________
+   leaky_re_lu_2 (LeakyReLU)    (None, 14, 14, 64)        0
+   _________________________________________________________________
+   conv2d_transpose_2 (Conv2DTr (None, 28, 28, 1)         1600 = (5*5*64+0)*1
+   =================================================================
+   Total params: 2,330,944
+   Trainable params: 2,305,472
+   Non-trainable params: 25,472
+   _________________________________________________________________
+
+
+
+   #discriminator
+   def make_discriminator_model():
+      model = tf.keras.Sequential()
+      model.add(layers.Conv2D(64, (5, 5), strides=(2, 2), padding='same',
+                                       input_shape=[28, 28, 1]))
+      model.add(layers.LeakyReLU())
+      # [tf.keras.layers.LeakyReLU](https://tensorflow.google.cn/api_docs/python/tf/keras/layers/LeakyReLU)
+      model.add(layers.Dropout(0.3))
+      # [tf.keras.layers.Dropout](https://tensorflow.google.cn/api_docs/python/tf/keras/layers/Dropout) 将输入单元的一部分随机设置为0，这有助于防止过拟合。
+
+      model.add(layers.Conv2D(128, (5, 5), strides=(2, 2), padding='same'))
+      model.add(layers.LeakyReLU())
+      model.add(layers.Dropout(0.3))
+
+      model.add(layers.Flatten())
+      model.add(layers.Dense(1))
+
+      return model
+
+   discriminator = make_discriminator_model()
+   _________________________________________________________________
+   Layer (type)                 Output Shape              Param #
+   =================================================================
+   conv2d (Conv2D)              (None, 14, 14, 64)        1664 = (5*5*1+1)*64
+   _________________________________________________________________
+   leaky_re_lu_3 (LeakyReLU)    (None, 14, 14, 64)        0
+   _________________________________________________________________
+   dropout (Dropout)            (None, 14, 14, 64)        0
+   _________________________________________________________________
+   conv2d_1 (Conv2D)            (None, 7, 7, 128)         204928 = (5*5*64+1)*128
+   _________________________________________________________________
+   leaky_re_lu_4 (LeakyReLU)    (None, 7, 7, 128)         0
+   _________________________________________________________________
+   dropout_1 (Dropout)          (None, 7, 7, 128)         0
+   _________________________________________________________________
+   flatten (Flatten)            (None, 6272)              0
+   _________________________________________________________________
+   dense_1 (Dense)              (None, 1)                 6273
+   =================================================================
+   Total params: 212,865
+   Trainable params: 212,865
+   Non-trainable params: 0
+   _________________________________________________________________
+
+
+
+   # Generator loss
+   def generator_loss(fake_output):
+      return cross_entropy(tf.ones_like(fake_output), fake_output)
+   # Discriminator loss
+   def discriminator_loss(real_output, fake_output):
+      real_loss = cross_entropy(tf.ones_like(real_output), real_output)
+      fake_loss = cross_entropy(tf.zeros_like(fake_output), fake_output)
+      total_loss = real_loss + fake_loss
+      return total_loss
+   # discriminator and the generator optimizers ?????
+   # [tf.keras.optimizers.Adam](https://tensorflow.google.cn/api_docs/python/tf/keras/optimizers/Adam?hl=en)
+   generator_optimizer = tf.keras.optimizers.Adam(1e-4) #实现Adam算法的优化器。学习率
+   discriminator_optimizer = tf.keras.optimizers.Adam(1e-4)
+
+
+
+   # training loop!!!
+   def train_step(images):
+      noise = tf.random.normal([BATCH_SIZE, noise_dim]) #根据batch大小生成随机数据
+
+      with tf.GradientTape() as gen_tape, tf.GradientTape() as disc_tape:
+         generated_images = generator(noise, training=True) #生成器，输出图片数据(None, 28, 28, 1)
+
+         real_output = discriminator(images, training=True) #判别器，输出判别数据(None, 1)
+         fake_output = discriminator(generated_images, training=True) #判别器，输出判别数据(None, 1)
+
+         gen_loss = generator_loss(fake_output)
+         disc_loss = discriminator_loss(real_output, fake_output)
+
+      gradients_of_generator = gen_tape.gradient(gen_loss, generator.trainable_variables) # 调用GradientTape.gradient方法，就会释放GradientTape拥有的资源
+      gradients_of_discriminator = disc_tape.gradient(disc_loss, discriminator.trainable_variables)
+
+      generator_optimizer.apply_gradients(zip(gradients_of_generator, generator.trainable_variables)) #input:List of (gradient, variable) pairs
+      discriminator_optimizer.apply_gradients(zip(gradients_of_discriminator, discriminator.trainable_variables))
+
+   def train(dataset, epochs):
+      for epoch in range(epochs):
+         start = time.time()
+
+         for image_batch in dataset: #BATCH_SIZE = 256
+            train_step(image_batch) #image_batch.shape=(256, 28, 28, 1)
+
+         # Produce images for the GIF as we go
+         display.clear_output(wait=True)
+         generate_and_save_images(generator,
+                                 epoch + 1,
+                                 seed)
+
+         # Save the model every 15 epochs
+         if (epoch + 1) % 15 == 0:
+            checkpoint.save(file_prefix = checkpoint_prefix)
+
+         print ('Time for epoch {} is {} sec'.format(epoch + 1, time.time()-start))
+
+      # Generate after the final epoch
+      display.clear_output(wait=True)
+      generate_and_save_images(generator,
+                                 epochs,
+                                 seed)
+
+   train(train_dataset, EPOCHS) #EPOCHS = 50 迭代五十次
+
+   ```
+
