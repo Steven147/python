@@ -401,8 +401,8 @@
    3. 首次安装的版本可能并不契合网络资源所要求的tensorflow及其所需的python版本，因此可以使用conda创建虚拟环境选择合适的版本。
    4. tensorflow gpu 需要nvida显卡的支持，新款macbook搭载的是amd显卡，因此gpu版本安装问题无解
    5. 步骤
-      - 下载anaconda_package（包含图形界面，对新手较友好）
-
+      - 下载anaconda_package（包含图形界面，对新手较友好） or [miniconda](https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/?C=M&O=A)
+      - open anaconda powershell prompt
       ``` shell
       > conda --version
       ```
@@ -411,27 +411,14 @@
       - 通过conda创建虚拟环境并初始化python，激活刚刚创建的虚拟环境
 
       ``` shell
-      > conda create -n venv pip python=3.7
-      > conda activate venv
+      > conda create -n tf pip python=3.7
+      > conda activate tf
       ```
 
-      ``` shell
-      > conda create -n tensorflow3.5 python=3.5
-      > conda activate tensorflow3.5
-      ```
-
-      - 通过pip包管理器
-        - 从网址[package location](https://tensorflow.google.cn/install/pip#package-location)安装所需的tensorflow包
+      - 通过[清华源](https://mirror.tuna.tsinghua.edu.cn/help/pypi/)安装
 
       ``` shell
-      (venv) > pip install --ignore-installed --upgrade (packageURL)
-      (venv) > pip install --upgrade tensorflow
-      ```
-
-        - 通过[清华源](https://mirror.tuna.tsinghua.edu.cn/help/pypi/)安装
-
-      ``` shell
-      (venv) > pip install -i https://pypi.tuna.tsinghua.edu.cn/simple tensorflow==1.12.0
+      (tf) > pip install -i https://pypi.tuna.tsinghua.edu.cn/simple tensorflow==2.1.0
       ```
 
 2. 使用
