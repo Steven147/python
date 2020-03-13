@@ -403,6 +403,7 @@
    5. 步骤
       - 下载anaconda_package（包含图形界面，对新手较友好） or [miniconda](https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/?C=M&O=A)
       - open anaconda powershell prompt
+
       ``` shell
       > conda --version
       ```
@@ -535,9 +536,9 @@
       _________________________________________________________________
       flatten_1 (Flatten)          (None, 1024)              0
       _________________________________________________________________
-      dense_2 (Dense)              (None, 64)                65600
+      dense_2 (Dense)              (None, 64)                65600 = (1024+1)*64
       _________________________________________________________________
-      dense_3 (Dense)              (None, 10)                650
+      dense_3 (Dense)              (None, 10)                650 = (64+1)*10
       =================================================================
       Total params: 122,570
       Trainable params: 122,570
